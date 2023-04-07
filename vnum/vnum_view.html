@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+<html>
+  <head>
+    <h1> 의왕시청 전기충전소<br>(223.171.67.106)</h1>
+    <script>
+        function getUrlParams() {
+          var params = {};
+          window.location.search.replace(/[?&]+([^=&]+)=([^&]*)/gi, function(str, key, value) { params[key] = value; });
+          return params;
+        }
+        function getImage(_ip) {
+            var image = document.getElementById('plate_detect');
+            image.src="/vntemp/status/"+_ip+"?" + new Date().getTime();
+
+            var prevAjaxReturned = true;
+            var xhr = null;
+            xhr = $.ajax({
+              type: "GET",
+              data: "v1="+v1+"&v2="+v2,
+              url: "/vntemp/db/",
+              success: function(_jsonData) {
+                var loadData = _jsonData.result;
+                $.each(loadData, function(key) {
+                  var _val = loadData[key];
+                  document.getElementById('_addr_s').innerHTML = _val._V_NUM;
+                  prevAjaxReturned = true;
+
+                });
+              }
+            });
+        }
+        setInterval(function() {
+          $.get('/vntemp/db/', function(data) {
+            $('#result').html(data);
+          });
+        }, 1000);
+        objParams = getUrlParams();
+        setInterval(function(){getImage(objParams.ip)}, 300);
+    </script>
+  </head>
+  <body>
+    <div>
+      <img id="plate_detect" src=""/>
+    </div>
+  </body>
+</html>

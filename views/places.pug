@@ -1,0 +1,164 @@
+extends layout
+
+block header
+  //- link(rel='stylesheet', href='/css/tooltip.css')
+  link(rel='stylesheet', href='https://unpkg.com/leaflet@1.7.1/dist/leaflet.css', integrity='sha512-xodZBNTC5n17Xt2atTPuE1HxjVMSvLVW9ocqUKLsCC5CXdbqCmblAshOMAS6/keqq/sMZMZ19scR4PsZChSR7A==', crossorigin='anonymous')
+  style.
+    .table tbody tr.highlight td {
+      background-color: #CFF5FF;
+    }
+
+    .fixed-table-head {
+      overflow-y: auto; 
+      height: 480px;
+    }
+
+    .fixed-table-head thead th {
+      background-color: #FFFFFF;
+      position: sticky;
+      top: 0;
+    }
+
+    .fixed-table-head tbody tr td {
+      vertical-align: middle;
+    }
+
+  //- Make sure you put this AFTER Leaflet's CSS
+  script(src='https://unpkg.com/leaflet@1.7.1/dist/leaflet.js', integrity='sha512-XQoYMqMTK8LvdxXYG3nZ448hOEQiglfqkJs1NOQV44cWnUrBc8PkAOcXy20w0vlaXaVUearIOBhiXZ5V3ynxwA==', crossorigin='anonymous')
+  //- script.
+  //-   function init() {
+
+  //-   }
+  //-   window.addEventListener('load', init());
+
+block content
+  nav(class='navbar sticky-top navbar-expand-lg navbar-light bg-light')
+    a(class='navbar-brand' href='/') 전기차 충전소 인식 시스템
+      button(class='navbar-toggler', type='button', data-toggle='collapse', data-target='#navbarNavAltMarkup', aria-controls='navbarNavAltMarkup', aria-expanded='false', aria-label='Toggle navigation')
+      span(class='navbar-toggler-icon')
+        div(class='collapse navbar-collapse', id='navbarNavAltMarkup')
+        div(class='navbar-nav')
+          //- a(class='nav-item nav-link active', href='#') Home span(class='sr-only')(current)
+          a(class='nav-item nav-link active', href='/places?org=18') 의왕시
+          a(class='nav-item nav-link disabled', href='#') 경기도
+
+  div(class='container mt-5')
+    div(class='row')
+      div(class='col-sm')
+        div(id='uiwangMap', style='height: 800px;')
+      div(class='col-sm')
+        div(class='panel panel-primary', id='panel_places')
+          div(class='panel-heading') 
+            -var today = new Date();
+            h3(class='panel-title') <span class='h3'>전기차 충전 구역 현황 <small>#{today.toLocaleString()}</small></span>
+          div(class='panel-body fixed-table-head')
+            table(class='table table-hover')
+              thead
+                tr
+                  th 장소
+                  th 주차면
+                  th #
+                  th 상태
+              tbody
+                -for (var i=1; i<places.length; i++)
+                  tr(class='accordion-toggle collapsed m-0', id='item'+i, data-toggle='collapse', data-parent='#item'+i, href='#collapse'+i)
+                    td #{places[i].name}
+                    td #{places[i].space}  
+                      //- i(class='far fa-caret-square-down')
+                    td 
+                      i(class='far fa-caret-square-down')
+                    td
+                      -for (var j = 0; j < places[i].space; j++)
+                        if (j % 4 == 0)
+                          img(src='images/ov.png',style='width:48px;height:48px')
+                        else if (j % 4 == 1)
+                          img(src='images/ev_over.png',style='width:48px;height:48px')
+                        else if (j % 4 == 2)
+                          img(src='images/ev.png',style='width:48px;height:48px')
+                        else 
+                          img(src='images/nv.png',style='width:48px;height:48px')
+                  tr(class='hide-table-padding p-0 m-0')
+                    td(colspan='4')
+                      div(class='collapse in p-3', id='collapse'+i,)
+                        table(class='table-borderless')
+                          -for (var j = 0; j < places[i].space; j++)
+                            tr
+                              td #{j+1}
+                              -if (j % 4 == 0)
+                                td 일반차량
+                                td 입차시간: 
+                              -else if (j % 4 == 1)
+                                td 전기차/충전시간초과
+                                td 입차시간: 
+                              -else if (j % 4 == 2)
+                                td 전기차
+                                td 입차시간: 
+                              -else
+                                td 비어있음
+                                td 입차시간: 
+          div(class='panel-context')
+            table
+              tr
+                td 연결상태
+              tr
+                td 충전소위치
+              tr
+                td 소리크기
+              tr
+                td 시스템시간
+              tr
+                td 입차시간 2020-12-01 12:00:54
+                td (3 시간 주차중)
+                
+block body-scripts
+  script.
+    var g_marker = JSON.parse('!{marker}');
+    function get_index(_marker, _lat, _lon) {
+      for (var i=1; i<_marker.length; i++) {
+        if (_lat == _marker[i].lat && _lon == _marker[i].lon) {
+          return i;
+        }
+      }
+      return 0;
+    }
+
+    //- L.tileLayer('https://api.mapbox.com/styles/v1/{id}/tiles/{z}/{x}/{y}?access_token=pk.eyJ1IjoiaHl1bnRhay1zaGluIiwiYSI6ImNraTRia3c3cjBmdnAycG1zdTg4OGJ5MnUifQ.6TWhcCZwW2L7NU2ZNEUuvw', {
+    //-   minZoom: 12,
+    //-   maxZoom: 19,
+    //-   attribution: 'Map data &copy; <a href="https://www.openstreetmap.org/">OpenStreetMap</a> contributors',
+    //-   id: 'mapbox/streets-v11',
+    //-   tileSize: 512,
+    //-   zoomOffset: -1
+    //- }).addTo(map);
+    //var map = L.map('uiwangMap').setView([places[0].lat, places[0].lon], places.length-1);
+    var map = L.map('uiwangMap').setView([37.3530, 126.9702], 13);
+    L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+      minZoom: 13,
+      maxZoom: 19,
+      attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+    }).addTo(map);
+
+    // https://leafletjs.com/reference-1.0.3.html#marker-option
+    for (var _i=1;_i<g_marker.length;_i++) {
+      var _lat = g_marker[_i].lat;//parseFloat(g_marker[_i].lat);
+      var _lon = g_marker[_i].lon;//parseFloat(g_marker[_i].lon);
+      L.marker([_lat, _lon], {title:g_marker[_i].name, alt:'#item'+_i}).on('click', function(e) { // riseOnHover:true, draggable:true
+        location.href='/place?t1';
+      }).on('mouseover', function(e) {
+        //console.log(e.latlng);
+        var LatLng = e.latlng; // e.latlng; this.getLatLng();
+        var _lnk = '#item'+get_index(g_marker, LatLng.lat, LatLng.lng);
+        add_class($(_lnk));
+      }).on('mouseout', function(e) {
+        //console.log(e);
+        var LatLng = e.latlng; // e.latlng; this.getLatLng();
+        var _lnk = '#item'+get_index(g_marker, LatLng.lat, LatLng.lng);
+        del_class($(_lnk));
+      }).addTo(map);
+    }
+    function add_class(_val) {
+      _val.addClass('highlight').siblings().removeClass('highlight');
+    }
+    function del_class(_val) {
+      _val.removeClass('highlight');
+    }

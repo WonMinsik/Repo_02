@@ -1,0 +1,38 @@
+extends layout
+block header
+  style.
+    body {
+      background-image: url(images/background.jpg);
+      background-repeat: no-repeat;
+      background-position: center 25%;
+      background-size: cover;
+      overflow: none;
+    }
+  //- [E2s] 2022.10.18 뒤로가기 방지책 추가
+  script.
+    window.history.forward();
+    function noBack(){window.history.forward();}
+  //- -------------------------------------
+block content
+  //- [E2s] 2022.10.18 뒤로가기 방지책 추가
+  body( onload="noBack();" onpageshow="if(event.persisted){noBack();}" onunload="")
+  //- -------------------------------------
+  //- h1= title
+  //- nav(class='navbar navbar-expand-lg navbar-light fixed-top' id='mainNav')
+  //-   a(class='navbar-brand js-scroll-trigger' href='./') Home
+
+  section(class='mainindex')
+    div(class='container d-flex h-50 align-items-center')
+      div(class='mx-auto text-center')
+        h1(class='mx-auto mb-5') 전기차 충전소 AI 감시 시스템
+
+    div(class='container align-items-center w-50')
+      form(class='form-signin flex-column', action='/login/signin', method='POST')
+        label(class='sr-only', for='username') ID
+        input(class='form-control mt-1 mb-1', type='text', id='username', name='username', autocomplete='username', placeholder='사용자 이름', required, autofocus)
+        label(class='sr-only', for='password') PW
+        input(class='form-control mt-1 mb-1', type='password', id='password', name='password', placeholder='비밀번호', required, autocomplete='on')
+        input(class='btn btn-sm btn-primary btn-block mt-2 mb-1', type='submit', value='로그인')
+
+block body-scripts
+  script.

@@ -1,0 +1,8 @@
+.DS_Store
+._DS_Store
+.vs
+
+node_modules
+
+uploads/.view
+uploads/*.jpg

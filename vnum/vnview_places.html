@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<Title> progress bar </ title>
+	<style>
+	#progress{
+		width: 1000px;
+		height: 35px;
+		line-height: 35px;
+		margin: 100px auto;
+		position: relative;
+	}
+	#progress_bar{
+		width: 900px;
+		height: 100%;
+		background: #e8e8e8;
+		border-radius: 8px;
+	}
+	#progress_bar_fg{
+		width: 0;
+		height: 100%;
+		background: orange;
+		border-top-left-radius: 8px;
+		border-bottom-left-radius: 8px;
+	}
+	span{
+		position: absolute;
+		top: -7px;
+		left: 0;
+		width: 30px;
+		height: 49px;
+		background: orange;
+		border-radius: 5px;
+		cursor: pointer;
+	}
+	#progress_value{
+		position: absolute;
+		right: 30px;
+		top: 0;
+	}
+	</style>
+</head>
+<body>
+ 
+<div id="progress">
+	<div id="progress_bar">
+		<div id="progress_bar_fg"></div>
+		<span></span>
+	</div>
+	<div id="progress_value">0%</div>
+</div>
+ 
+ 
+<script>
+	window.onload = function(){
+ 
+		 // 1. Obtain the required label
+		var oProgress = document.getElementById('progress');
+		var oProgress_bar = oProgress.children[0];
+		var oProgress_value = oProgress.children[1];
+		var oProgress_bar_fg = oProgress_bar.children[0];
+		var mask = oProgress_bar.children[1];
+ 
+		 // 2. monitor mouse down
+		mask.onmousedown= function(e){
+			 2.1 // obtain the initial position
+			var event = e || event;
+			// var x = event.clientX - oProgress.offsetLeft;
+			 // 2.2 mobile monitor mouse event source to document reasonable remember return false;
+			document.onmousemove = function(e){
+				var event = e || event;
+				 // Get position of 2.3
+				// event.clientX - oProgress.offsetLeft
+				var x = event.clientX - oProgress.offsetLeft;
+				if( x<=0 ){
+					x = 0;
+				}else if( x>=oProgress_bar.offsetWidth - mask.offsetWidth ){
+					x=oProgress_bar.offsetWidth - mask.offsetWidth;
+				}
+				mask.style.left = x + 'px';
+				oProgress_bar_fg.style.width = x + 'px';
+				oProgress_bar_fg.style.backgroundColor = 'orange';
+				oProgress_value.innerHTML = parseInt((x/870)*100) + '%';
+ 
+				return false;
+			}
+		}
+ 
+		document.onmouseup = function(){
+			document.onmousemove=null;
+		}
+ 
+ 
+	}
+</script>
+</body>
+</html>

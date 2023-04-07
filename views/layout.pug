@@ -1,0 +1,43 @@
+- this['enable-gradients'] = true;
+
+doctype html
+html
+  head
+    meta(charset='utf-8')
+    meta(name='viewport', content='width=device-width, initial-scale=1, shrink-to-fit=no')
+
+    title= title
+    link(rel='icon', type='image/x-icon', href='/assets/favicon.ico')
+
+    //- link(rel='stylesheet', href='/bootstrap/dist/css/bootstrap.min.css', crossorigin='anonymous')
+    link(rel='stylesheet', href='/bootstrap-material-design/dist/css/bootstrap-material-design.min.css', crossorigin='anonymous')
+    //- Font Awesome icons (free version)
+    link(rel='stylesheet', href='/css/font-awesome.min.css')
+    link(rel='stylesheet', href='/css/nanumgothic.css')
+    link(rel='stylesheet', href='/css/style.css')
+
+    block header
+
+  body
+    block content
+
+    //- jQuery and JS bundle w/ Popper.js
+    script(src='/jquery/dist/jquery.min.js', crossorigin='anonymous')
+    //- script(src='https://code.jquery.com/jquery-3.5.1.slim.min.js', integrity='sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj', crossorigin='anonymous')
+    script(src='/popper.js/dist/umd/popper.js', crossorigin='anonymous')
+    //- script(src='/bootstrap/dist/js/bootstrap.bundle.min.js', crossorigin='anonymous')
+    //- MDB
+    script(src='/bootstrap-material-design/dist/js/bootstrap-material-design.js', crossorigin='anonymous')
+
+    //- Third party plugin JS
+    //- script(src='https://code.jquery.com/ui/1.12.1/jquery-ui.min.js', integrity='sha256-VazP97ZCwtekAsvgPBSUwPFKdrwD3unUfSGVYrahUqU=', crossorigin='anonymous')
+    //- script(src='https://cdn.jsdelivr.net/npm/jquery.easing@1.4.1/jquery.easing.min.js', integrity='sha256-H3cjtrm/ztDeuhCN9I4yh4iN2Ybx/y1RM7rMmAesA0k=', crossorigin='anonymous')
+
+    //- script(src='/bootstrap-datepicker/dist/js/bootstrap-datepicker.min.js', crossorigin='anonymous')
+
+    script.
+      $(document).ready(function() {
+        $('body').bootstrapMaterialDesign();
+      });
+
+    block body-scripts

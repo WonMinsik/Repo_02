@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1"  http-equiv='Content-Type' content='text/html; charset=utf-8'>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<style>
+body {
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+* {
+  box-sizing: border-box;
+}
+#myInput {
+  background-image: url('/css/searchicon.png');
+  background-position: 10px 10px;
+  background-repeat: no-repeat;
+  width: 100%;
+  font-size: 16px;
+  padding: 12px 20px 12px 40px;
+  border: 1px solid #ddd;
+  margin-bottom: 12px;
+}
+
+#myTable {
+  border-collapse: collapse;
+  width: 100%;
+  border: 1px solid #ddd;
+  font-size: 18px;
+}
+
+#myTable th, #myTable td {
+  text-align: left;
+  padding: 12px;
+}
+
+#myTable tr {
+  border-bottom: 1px solid #ddd;
+}
+
+#myTable tr.header, #myTable tr:hover {
+  background-color: #f1f1f1;
+}
+/* style the container */
+.container {
+  position: relative;
+  border-radius: 5px;
+  background-color: #f2f2f2;
+  padding: 20px 0 30px 0;
+} 
+
+/* style inputs and link buttons */
+input,
+.btn {
+  width: 100%;
+  padding: 12px;
+  border: none;
+  border-radius: 4px;
+  margin: 5px 0;
+  opacity: 0.85;
+  display: inline-block;
+  font-size: 17px;
+  line-height: 20px;
+  text-decoration: none; /* remove underline from anchors */
+}
+
+input:hover,
+.btn:hover {
+  opacity: 1;
+}
+
+/* add appropriate colors to fb, twitter and google buttons */
+.fb {
+  background-color: #3B5998;
+  color: white;
+}
+
+.twitter {
+  background-color: #55ACEE;
+  color: white;
+}
+
+.google {
+  background-color: #dd4b39;
+  color: white;
+}
+
+/* style the submit button */
+input[type=submit] {
+  background-color: #4CAF50;
+  color: white;
+  cursor: pointer;
+}
+
+input[type=submit]:hover {
+  background-color: #45a049;
+}
+
+/* Two-column layout */
+.col {
+  float: left;
+  width: 50%;
+  margin: auto;
+  padding: 0 50px;
+  margin-top: 6px;
+}
+
+/* Clear floats after the columns */
+.row:after {
+  content: "";
+  display: table;
+  clear: both;
+}
+
+/* vertical line */
+.vl {
+  position: absolute;
+  left: 50%;
+  transform: translate(-50%);
+  border: 2px solid #ddd;
+  height: 175px;
+}
+
+/* text inside the vertical line */
+.vl-innertext {
+  position: absolute;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  background-color: #f1f1f1;
+  border: 1px solid #ccc;
+  border-radius: 50%;
+  padding: 8px 10px;
+}
+
+/* hide some text on medium and large screens */
+.hide-md-lg {
+  display: none;
+}
+
+/* bottom container */
+.bottom-container {
+  text-align: center;
+  background-color: #666;
+  border-radius: 0px 0px 4px 4px;
+}
+
+/* Responsive layout - when the screen is less than 650px wide, make the two columns stack on top of each other instead of next to each other */
+@media screen and (max-width: 650px) {
+  .col {
+    width: 100%;
+    margin-top: 0;
+  }
+  /* hide the vertical line */
+  .vl {
+    display: none;
+  }
+  /* show the hidden text on small screens */
+  .hide-md-lg {
+    display: block;
+    text-align: center;
+  }
+}
+</style>
+<script src="http://code.jquery.com/jquery-1.10.2.js"></script>
+<script> 
+    function change_image() {
+        var dtime = new Date().getTime();
+        var image = document.getElementById('plate_detect'); 
+        image.src='/vntemp/status/223.171.67.106?' + dtime;
+    }
+    function change_db(_body) {
+        document.getElementById('_addr_s').innerHTML = _body._ADDR_S;
+        document.getElementById('_v_type').innerHTML = _body._V_TYPE;
+        //document.getElementById('_v_num').innerHTML = _body._V_NUM;
+    }
+    function request_db() {
+        $.ajax({
+            type: 'GET',
+            url: '/vntemp/db/223.171.67.106',
+            contentType: 'application/json; charset=utf-8'
+        })
+        .done(function(result) {
+            change_db(result);
+            change_image(); 
+            document.getElementById('_v_num').innerHTML = result;
+        })
+        .fail(function(xhr, status, error) {
+            console.log(error);
+        })
+        .always(function(data){
+        });
+    }
+    setInterval( function () { request_db();}, 500);
+</script>
+
+</head>
+
+<body>
+  <div class='container'>
+    <div class='row'>
+      
+      <div class='vl'>
+        <span class='vl-innertext'></span>
+      </div>
+
+      <!--<h2  id='_title' style="text-align:center">Login with Social Media or Manually</h2>-->
+      <div class='col'>
+        <table id='myTable'>
+          <!--<tr class='header'><th style='width:60%;'>Name</th><th style='width:40%;'>Country</th></tr>-->
+          <tr><td>충전소 위치</td><td id='_addr_s'></td></tr>
+          <tr><td>차량 종류</td><td id='_v_type'></td></tr>
+         <tr><td>차량 번호</td><td id='_v_num'></td></tr>
+        </table>
+      </div>
+
+      <div class='col'>
+        <div>
+          <img id='plate_detect' src='/vntemp/status/223.171.67.106'/>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</body>
+</html>

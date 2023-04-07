@@ -1,0 +1,160 @@
+{
+    "keep": {
+        "days": false,
+        "amount": 30
+    },
+    "auditLog": "/usr/src/app/logs/error/.d2da4756c93671395f40b60e633c43fb12f7d17c-audit.json",
+    "files": [
+        {
+            "date": 1670779771469,
+            "name": "/usr/src/app/logs/error/20221212.error.log",
+            "hash": "f7f4e4a4a1775000b0b538bb1b808242a3a50b73abf0a44ec4df145cc24d9730"
+        },
+        {
+            "date": 1670857412811,
+            "name": "/usr/src/app/logs/error/20221213.error.log",
+            "hash": "4dffd8cbe4c86b5f6ebe77cbc9cdc3732c382d903b29ab5dcefe2802fd30c252"
+        },
+        {
+            "date": 1670943804294,
+            "name": "/usr/src/app/logs/error/20221214.error.log",
+            "hash": "69eed64a2151c3b5b08abc8878e368343b6f99a1bb20371d2964c68e48cbf8fd"
+        },
+        {
+            "date": 1671030177232,
+            "name": "/usr/src/app/logs/error/20221215.error.log",
+            "hash": "dd310b12303d8cf35c056863349b7a83972c601b670c9beabd7184d2f22001ab"
+        },
+        {
+            "date": 1671116615528,
+            "name": "/usr/src/app/logs/error/20221216.error.log",
+            "hash": "6e232047432ff5b8a1ca42c79ed352e4fbdee644982160530d9491791e47e37e"
+        },
+        {
+            "date": 1671213145777,
+            "name": "/usr/src/app/logs/error/20221217.error.log",
+            "hash": "0071e82e4e12a7fc22077da57e8728d6a9eed9dd08fc5410935abcc2a0850fd1"
+        },
+        {
+            "date": 1671293479743,
+            "name": "/usr/src/app/logs/error/20221218.error.log",
+            "hash": "bc95801d02cc5f5f5ece1e4ab22bff2411174a0a7fb7a1ef11296c51ffb6dda1"
+        },
+        {
+            "date": 1671375884100,
+            "name": "/usr/src/app/logs/error/20221219.error.log",
+            "hash": "a6610a8b1716d2262707cb32464be8228314ab4685652cdfd9c0f78ec2147c22"
+        },
+        {
+            "date": 1671462227080,
+            "name": "/usr/src/app/logs/error/20221220.error.log",
+            "hash": "fb5e7e78a25943592bf05663ae3e195a2cbc5fb15d6f566dcda9bb20531c77d5"
+        },
+        {
+            "date": 1671558739504,
+            "name": "/usr/src/app/logs/error/20221221.error.log",
+            "hash": "0d88fc0d31a7e12268f3beb9995fc74b793776d9b8c6e710f33f722a09f9b568"
+        },
+        {
+            "date": 1671634814383,
+            "name": "/usr/src/app/logs/error/20221222.error.log",
+            "hash": "4a72bc30c59e6aa18431f3bf316792d3cbc9fa48c9fa9ffa707ed873d5af0478"
+        },
+        {
+            "date": 1671721291344,
+            "name": "/usr/src/app/logs/error/20221223.error.log",
+            "hash": "e8bb18d72a778bf473bc7bd0b18bb9402fc06d97d0e26aa9cca8852f7f7b5005"
+        },
+        {
+            "date": 1671807867946,
+            "name": "/usr/src/app/logs/error/20221224.error.log",
+            "hash": "a7e2f17fdb27e0a5f0863774a404e6e2429243fe446a4a680c890c1af0b7335e"
+        },
+        {
+            "date": 1671894038358,
+            "name": "/usr/src/app/logs/error/20221225.error.log",
+            "hash": "75040b047bd253a35e8cf6c12566dacbba832b6af6e94e8cc303e0ab70fd1c50"
+        },
+        {
+            "date": 1671980410413,
+            "name": "/usr/src/app/logs/error/20221226.error.log",
+            "hash": "eda7eef28d965e6114ba723834f342d6325a33502e09e9d20477d07297e33fca"
+        },
+        {
+            "date": 1672066820509,
+            "name": "/usr/src/app/logs/error/20221227.error.log",
+            "hash": "6ce53d137643906e8285fbb9726bbf8bb64dde8e40bdaeab8f2658c1e33e8ef6"
+        },
+        {
+            "date": 1672153294202,
+            "name": "/usr/src/app/logs/error/20221228.error.log",
+            "hash": "e1816cfdb6303721910223252661d9e9c34824e9224281343cafc6e1bddcd3d7"
+        },
+        {
+            "date": 1672246522548,
+            "name": "/usr/src/app/logs/error/20221229.error.log",
+            "hash": "2b5009b6ce4ce29d2a969375a2f2ff474c42700ab38b638b83a7246cb1ee7fbc"
+        },
+        {
+            "date": 1672326048812,
+            "name": "/usr/src/app/logs/error/20221230.error.log",
+            "hash": "77d0a0751cb643fb787174c3ece8fd02a3efa4de00dcc58e626dfb97c386f723"
+        },
+        {
+            "date": 1672412591346,
+            "name": "/usr/src/app/logs/error/20221231.error.log",
+            "hash": "5d07ff6ae5eeeccd1c33e7ae42655b4ea6f268f34eed55afa524e0a4e0c6ce17"
+        },
+        {
+            "date": 1672498861215,
+            "name": "/usr/src/app/logs/error/20230101.error.log",
+            "hash": "ccc55c874ba51dd838eebdfafbe0bf6f962d2af48145cab7f91c3d66e10eaf26"
+        },
+        {
+            "date": 1672585274539,
+            "name": "/usr/src/app/logs/error/20230102.error.log",
+            "hash": "44761edd2b73c0889bda89d17687b299963e4f991d94cdeb2e963ce5e47fb326"
+        },
+        {
+            "date": 1672671791179,
+            "name": "/usr/src/app/logs/error/20230103.error.log",
+            "hash": "364facab43702785555449ef3e6a6cd8036e919a4acfd1595b4d9eb7855583f7"
+        },
+        {
+            "date": 1672758001716,
+            "name": "/usr/src/app/logs/error/20230104.error.log",
+            "hash": "e15395854d400fd6b45abd7615c12169dd5ab5e879c95f245419f5a0b732dea9"
+        },
+        {
+            "date": 1672844449492,
+            "name": "/usr/src/app/logs/error/20230105.error.log",
+            "hash": "0affc33f05b12a8c4252f14b187469e03ebbdb76c4a7debea92801fa1acb4312"
+        },
+        {
+            "date": 1672930921843,
+            "name": "/usr/src/app/logs/error/20230106.error.log",
+            "hash": "fa3b39adf091a395729bbcc1c9d616d5457045599a00cc9f1f5e963ed815fb7e"
+        },
+        {
+            "date": 1673017394730,
+            "name": "/usr/src/app/logs/error/20230107.error.log",
+            "hash": "d684d738f6b1c52c0db6df2f4f9caec9d7d32f7727646c8001b4c7a45440b19b"
+        },
+        {
+            "date": 1673103607208,
+            "name": "/usr/src/app/logs/error/20230108.error.log",
+            "hash": "15e158260147ab7b980e61af682d1fccdfb3ea4261ba625745f397ea54cded35"
+        },
+        {
+            "date": 1673190039652,
+            "name": "/usr/src/app/logs/error/20230109.error.log",
+            "hash": "bfd8698fb9ac954f4f20574816caa4c79f18b6ae58e2b8c457b02a875b404b19"
+        },
+        {
+            "date": 1673276497923,
+            "name": "/usr/src/app/logs/error/20230110.error.log",
+            "hash": "9b0d6a1b355b896ef9edd0d1c26fa947a5bd7ff936065edb79b1f8cd614b5c5f"
+        }
+    ],
+    "hashType": "sha256"
+}

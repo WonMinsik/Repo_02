@@ -1,0 +1,10 @@
+extends layout
+
+block content
+  h1= title
+
+  p #{files.length} snapshots exists
+
+  for file in files
+    //- div(style='background-image:url(uploads/'+file+')') #{file}
+    img.snapshot#snapshot(src='uploads/'+file title=file)

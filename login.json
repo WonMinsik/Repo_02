@@ -1,0 +1,14 @@
+{
+    "users" : [
+        {
+            "username" : "skk716",
+            "password" : "lozzing159",
+            "auth" : 1
+        },
+        {
+            "username" : "e2s",
+            "password" : "e2s48914!",
+            "auth" : 2
+        }
+    ]
+}

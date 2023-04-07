@@ -1,0 +1,39 @@
+extends layout
+
+block header
+  style.
+    body {
+      background-image: url(images/background.jpg);
+      background-repeat: no-repeat;
+      background-position: center 25%;
+      background-size: cover;
+      overflow: none;
+    }
+
+block content
+  //- h1= title
+  //- nav(class='navbar navbar-expand-lg navbar-light fixed-top' id='mainNav')
+  //-   a(class='navbar-brand js-scroll-trigger' href='./') Home
+
+  section(class='mainindex')
+    div(class='container d-flex h-50 align-items-center')
+      div(class='mx-auto text-center')
+        h1(class='mx-auto mb-5') 전기차 충전소 인식 시스템
+
+    div(class='container align-items-center w-50')
+      if mode && mode === 'signup'
+        form(class='form-signin flex-column', action='/signup', method='POST')
+          label(class='sr-only', for='username') Email address
+          input(class='form-control mt-1 mb-1', type='text', id='username', name='username', autocomplete='username', placeholder='사용자', required, autofocus)
+          label(class='sr-only', for='password') Password
+          input(class='form-control mt-1 mb-1', type='password', id='password', name='password', placeholder='비밀번호', required)
+          input(class='form-control mt-1 mb-1', type='password', id='password-verify', name='password-verify', placeholder='비밀번호 확인', required)
+          input(class='btn btn-sm btn-primary btn-block mt-0 mb-2', type='submit', value='회원가입')
+      else
+        form(class='form-signin flex-column', action='/signin', method='POST')
+          label(class='sr-only', for='username') Email address
+          input(class='form-control mt-1 mb-1', type='text', id='username', name='username', autocomplete='username', placeholder='사용자', required, autofocus)
+          label(class='sr-only', for='password') Password
+          input(class='form-control mt-1 mb-1', type='password', id='password', name='password', placeholder='비밀번호', required)
+          input(class='btn btn-sm btn-primary btn-block mt-2 mb-1', type='submit', value='로그인')
+          a(class='btn btn-sm btn-link btn-block mt-1 mb-2') 회원가입

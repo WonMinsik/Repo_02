@@ -1,0 +1,288 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1" charset="utf-8">
+	<!--
+	<link href='http://fonts.googleapis.com/css?family=Ubuntu&subset=cyrillic,latin' rel='stylesheet' type='text/css' />
+	-->
+    <link rel="stylesheet" href="//www.hyundaicard.com/css/common_web.css">
+    <link rel="stylesheet" href="//fonts.googleapis.com/earlyaccess/nanumgothic.css">
+    <link rel="stylesheet" href="//fonts.googleapis.com/earlyaccess/nanumgothiccoding.css">
+    <link rel="stylesheet" href="//fonts.googleapis.com/earlyaccess/nanummyeongjo.css">
+    <link rel="stylesheet" href="//fonts.googleapis.com/earlyaccess/nanumbrushscript.css">
+    <link rel="stylesheet" href="//fonts.googleapis.com/earlyaccess/nanumpenscript.css">
+    <link rel="stylesheet" href="//cdn.jsdelivr.net/font-nanum/1.0/nanumbarungothic/nanumbarungothic.css"> 
+    <style>
+        @font-face {
+            font-family: 'Wemakeprice-Bold';
+            src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_20-10-21@1.0/Wemakeprice-Bold.woff') format('woff');
+            font-weight: normal;
+            font-style: normal;
+        }
+        @font-face {
+            font-family: 'Wemakeprice-Regular';
+            src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_20-10-21@1.0/Wemakeprice-Regular.woff') format('woff');
+            font-weight: normal;
+            font-style: normal;
+        }
+        @font-face {
+            font-family: 'YouandiModernTR';
+            font-style: normal;
+            font-weight: normal;
+            src: url('https://www.hyundaicard.com/font/YouandiModernTR.woff') format('woff'),
+                 url(https://www.hyundaicard.com/font/YouandiModernTR.ttf) format('opentype');
+        }
+        /*@import url(//fonts.googleapis.com/earlyaccess/nanumgothic.css);*/
+        * {
+            box-sizing: border-box;
+        }
+        body {
+            margin: 0;
+            font-family: NanumBarunGothic, Arial, Helvetica, sans-serif;
+        }
+        .col-50 {
+            -ms-flex: 50%; /* IE10 */
+            flex: 50%;
+        }
+        /* vertical line */
+        .vl {
+            position: absolute;
+            left: 50%;
+            transform: translate(-50%);
+            border: 2px solid #ddd;
+            height: 175px;
+        }
+        /* text inside the vertical line */
+        .vl-innertext {
+            position: absolute;
+            top: 50%;
+            transform: translate(-50%, -50%);
+            background-color: #f1f1f1;
+            border: 1px solid #ccc;
+            border-radius: 50%;
+            padding: 8px 10px;
+        }
+        /* hide some text on medium and large screens */
+        .hide-md-lg {
+            display: none;
+        }
+        /* The grid: Three equal columns that floats next to each other */
+        .column {
+            float: left;
+            width: 33.33%;
+            padding: 50px;
+            text-align: center;
+            font-size: 25px;
+            cursor: pointer;
+            color: white;
+        }
+        .containerTab {
+            padding: 20px;
+            color: white;
+        }
+        /* Two-column layout */
+        .col {
+            float: left;
+            width: 50%;
+            margin: auto;
+            padding: 0 50px;
+            margin-top: 6px;
+        }
+        /* Clear floats after the columns */
+        .row:after {
+            content: "";
+            display: table;
+            clear: both;
+            margin-left: 5%;
+        }
+        /* Closable button inside the container tab */
+        .closebtn {
+            float: right;
+            color: white;
+            font-size: 35px;
+            cursor: pointer;
+        }
+		/* Dashed border */
+		hr.dashed {
+		  border-top: 3px dashed #bbb;
+		}
+
+		/* Dotted border */
+		hr.dotted {
+		  border-top: 3px dotted #bbb;
+		}
+
+		/* Solid border */
+		hr.solid {
+		  border-top: 3px solid #bbb;
+		}
+
+		/* Rounded border */
+		hr.rounded {
+		  border-top: 8px solid #bbb;
+		  border-radius: 5px;
+		}
+
+        .btn {
+            border: none; /*2px solid black;*/
+            border-radius: 2px;
+            background-color: white;
+            color: orange;
+            padding: 14px 28px;
+            font-size: 16px;
+            cursor: pointer;
+            width: 200px;
+        }
+        /* Green */
+        .success {
+            border-color: #4CAF50;
+            color: green;
+            border-radius: 2px;
+            margin-left: 4px;
+            margin-top: 4px;
+            margin-bottom: 4px;
+        }
+        .success:hover {
+            background-color: #4CAF50;
+            color: white;
+        }
+        /* Blue */
+        .blue {
+            font-family:'YouandiModern Head';
+            border: 2px solid #2196F3;
+            border-color: #2196F3;
+            color: dodgerblue;
+            border-radius: 2px;
+            margin-left: 4px;
+            margin-top: 4px;
+            margin-bottom: 4px;
+        }
+        .blue:focus{
+            color: white;
+		    background-color:orange;
+	    }
+        .blue:hover {
+            background: #2196F3;
+            color: white;
+        }
+        /* Orange */
+        .warning {
+            border-color: #ff9800;
+            color: orange;
+            border-radius: 2px;
+            margin-left: 4px;
+            margin-top: 4px;
+            margin-bottom: 4px;
+        }
+        .warning:hover {
+            background: #ff9800;
+            color: white;
+        }
+        /* Red */
+        .red {
+            font-family:'YouandiModern Head';
+            border: 2px solid #f44336;
+            border-color: #f44336;
+            color: red;
+            border-radius: 2px;
+            margin-left: 4px;
+            margin-top: 4px;
+            margin-bottom: 4px;
+        }
+        .red:hover {
+            background: #f44336;
+            color: white;
+        }
+        /* Gray */
+        .default {
+            border-color: #e7e7e7;
+            color: black;
+        }
+        .default:hover {
+            background: #e7e7e7;
+        }
+        #status_frame { width: 100%; height: 800px; }
+    </style>
+</head>
+<body>
+    <script src="/scripts/jquery.min.js"></script>
+    <script>
+        var _cur_ip = "";
+        function open_vnstatus(_ip, _name) {
+            if (_ip == "") {
+                _cur_ip = _ip;
+                //document.getElementById("view_host").innerHTML=_ip;
+                //$('#status_command').hide();
+                $('#status_frame').attr('src', '/vnstatus/'+_ip);
+            } else {
+                //$('#status_command').show();
+                _cur_ip = _ip;
+                if (_ip == "127.0.0.1") {
+                    $('#status_frame').attr('src', '/vntemp/'+_ip); // Test Request
+                }
+                else {
+                    $('#status_frame').attr('src', '/vnstatus/'+_ip);
+                }
+            }
+        }
+        function open_vnrequest(_cmd) {
+            if (_cur_ip != "") {
+                if (_cmd == 3) {
+                    if (confirm("실행하시겠습니까?") == false) { //취소
+                        return false;
+                    }
+                }
+                $('#status_frame').attr('src', '/vnrequest/command/?host='+_cur_ip+'&cmd='+_cmd+'&value=0');
+            }
+        }
+    </script>
+    <div>
+        <h2 id="view_title1" style="text-align:center; color:#4CAF50; font-size: 30px; font-family:'Nanum Myeongjo';">차량번호 인식 시스템 (의왕시)</h2>
+        <p id="view_title2"  style="text-align:right; color:#ff9800; font-size: 25px; font-family:'Nanum Brush Script';">( 환경과, 정보통신과 )&nbsp;&nbsp;&nbsp;</p>
+    </div>
+      
+    <hr class="dotted">
+
+    <div class="row">
+        <button class="btn blue" onclick='open_vnstatus("", "Snapshots")'>Snapshots</button>
+        <button class="btn blue" onclick='open_vnstatus("223.171.67.106", "설치장소 1")'>223.171.67.106</button>
+        <button class="btn blue" onclick='open_vnstatus("223.171.67.151", "설치장소 2")'>223.171.67.151</button>
+        <button class="btn blue" onclick='open_vnstatus("223.171.56.78",  "설치장소 3")'>223.171.56.78</button>
+        <button class="btn blue" onclick='open_vnstatus("223.171.56.219", "설치장소 4")'>223.171.56.219</button>
+        <button class="btn blue" onclick='open_vnstatus("223.171.56.247", "설치장소 5")'>223.171.56.247</button>
+        <button class="btn blue" onclick='open_vnstatus("223.171.67.105", "설치장소 6")'>설치장소 6</button>
+        <button class="btn blue" onclick='open_vnstatus("223.171.67.105", "설치장소 7")'>설치장소 7</button>
+        <button class="btn blue" onclick='open_vnstatus("223.171.67.105", "설치장소 8")'>설치장소 8</button>
+        <button class="btn blue" onclick='open_vnstatus("223.171.67.105", "설치장소 9")'>설치장소 9</button>
+        <button class="btn blue" onclick='open_vnstatus("223.171.67.105", "설치장소 10")'>설치장소 10</button>
+        <button class="btn blue" onclick='open_vnstatus("223.171.67.105", "설치장소 11")'>설치장소 11</button>
+        <button class="btn blue" onclick='open_vnstatus("223.171.67.105", "설치장소 12")'>설치장소 12</button>
+        <button class="btn blue" onclick='open_vnstatus("223.171.67.105", "설치장소 13")'>설치장소 13</button>
+        <button class="btn blue" onclick='open_vnstatus("223.171.67.105", "설치장소 14")'>설치장소 14</button>
+        <button class="btn blue" onclick='open_vnstatus("223.171.67.105", "설치장소 15")'>설치장소 15</button>
+        <button class="btn blue" onclick='open_vnstatus("223.171.67.105", "설치장소 16")'>설치장소 16</button>
+        <button class="btn blue" onclick='open_vnstatus("223.171.67.105", "설치장소 17")'>설치장소 17</button>
+        <button class="btn blue" onclick='open_vnstatus("223.171.67.105", "설치장소 18")'>설치장소 18</button>
+        <button class="btn blue" onclick='open_vnstatus("127.0.0.1", "설치장소 19")'>127.0.0.1 </button>
+        <button class="btn blue" onclick='open_vnstatus("192.168.219.183", "설치장소 20")'>192.168.219.183</button>
+    </div>
+
+    <!--
+    <div id='status_command' class='row'>
+    	<hr class="dotted">
+        <h2 id="view_host" style="color:#f44336; font-size: 30px; font-family:'Nanum Myeongjo'; margin-left: 10px;"></h2>
+        <button class="btn red" onclick='open_vnrequest(1)'>시스템 정보</button>
+        <button class="btn red" onclick='open_vnrequest(2)'>서버설정</button>
+        <button class="btn red" onclick='open_vnrequest(3)'>시스템 재시작</button>
+        <button class="btn red" onclick='open_vnrequest(4)'>카메라 캡쳐</button>
+        <button class="btn red" onclick='open_vnrequest(5)'>볼륨설정</button>
+        <button class="btn red" onclick='open_vnrequest(6)'>경광등 제어설정</button>
+        <button class="btn red" onclick='open_vnrequest(7)'>안내방송 제어</button>
+    </div>
+    -->
+    
+    <hr class="dotted">
+    <iframe id='status_frame' frameBorder="0"></iframe>
+</body>
+</html>
+    

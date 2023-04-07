@@ -1,0 +1,13 @@
+doctype html
+html
+  head
+  body
+    h1= title
+    ul
+      each val, key in results
+        if key == "server" || key == "plate"
+          p <b>#{key}</b>
+          each _val, _key in val
+            p &nbsp;&nbsp;&nbsp;&nbsp;<b>#{_key}</b> : #{_val}
+        else
+          p <b>#{key}</b> : #{val}
